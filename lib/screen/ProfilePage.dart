@@ -58,7 +58,7 @@ class ProfilePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text("Profile", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            SizedBox(height: 30),
+            SizedBox(height: 19),
             image != null
                 ? CircleAvatar(
               radius: 64,
@@ -68,8 +68,12 @@ class ProfilePage extends StatelessWidget {
               radius: 64,
               backgroundColor: Colors.grey,
             ),
-            SizedBox(height: 15),
-            _buildInfoBox("Username:", controller.username.value),
+            SizedBox(height: 20),
+            Text(
+              controller.username.value, // Display the username here
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 35),
             _buildInfoBox("Name:", controller.name.value),
             _buildInfoBox("Email:", controller.email.value),
             _buildInfoBox("Phone:", controller.phone.value),

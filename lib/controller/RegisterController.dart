@@ -7,20 +7,9 @@ class RegisterController extends GetxController {
   final RxString username = RxString("");
   final RxString name = RxString("");
   final RxString phone = RxString("");
+  final RxString password = RxString("");
   final RxString address = RxString("");
   final RxString email = RxString("");
-
-  void resultRegister(
-      String username,
-      String name,
-      String email,
-      String phone,
-      String address,
-      // String imagePath,
-      ) {
-    resultData.value = "Registration successful";
-    print("U'r Profile Page " + resultData.value.toString());
-  }
 
   void updateUserProfile(
       String username,
@@ -28,9 +17,11 @@ class RegisterController extends GetxController {
       String email,
       String phone,
       String address,
+      String password,
       Uint8List? image,
       ) {
     this.username.value = username;
+    this.password.value = password;
     this.name.value = name;
     this.email.value = email;
     this.phone.value = phone;
