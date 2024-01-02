@@ -99,8 +99,9 @@ class _RegisterPageState extends State<RegisterPage> {
     required TextEditingController controller,
     IconData? icon,
     TextInputType keyboardType = TextInputType.text, // Set default keyboardType to text
-    List<TextInputFormatter>? inputFormatters, // Add optional inputFormatters parameter
-    String? Function(String?)? validator, // Add an optional validator function
+    List<TextInputFormatter>? inputFormatters,
+    bool obscureText = false,// Add optional inputFormatters parameter
+    String? Function(String?)? validator,
   }) {
     return Container(
       margin: EdgeInsets.all(8),
@@ -108,6 +109,7 @@ class _RegisterPageState extends State<RegisterPage> {
         controller: controller,
         keyboardType: keyboardType, // Use the provided keyboardType
         inputFormatters: inputFormatters,
+        obscureText: obscureText,
         decoration: InputDecoration(
           labelText: label,
           hintText: label,
@@ -161,10 +163,23 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(
               height: 20,
             ),
-            myText(label: "Username", controller: usernameCtr,icon: Icons.person,),
-            myText(label: "Name", controller: nameCtr,icon: Icons.perm_identity_outlined,),
+            myText(label: "Username", controller: usernameCtr,icon: Icons.person,
+              validator: (value) {
+                if (value == null || value.isEmpty)
+                  return null; // Return null for valid input
+              },),
+            myText(label: "Name", controller: nameCtr,icon: Icons.perm_identity_outlined,
+              validator: (value) {
+                if (value == null || value.isEmpty)
+                  return null; // Return null for valid input
+              },),
             myText(
-              label: "Password", controller: passwordCtr,icon: Icons.lock,),
+              label: "Password", controller: passwordCtr,icon: Icons.lock,obscureText: true,
+              validator: (value) {
+                if (value == null || value.isEmpty)
+                return null; // Return null for valid input
+              },
+            ),
             myText(
               label: "Phone",
               controller: phoneCtr,

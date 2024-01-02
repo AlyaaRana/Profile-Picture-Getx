@@ -77,6 +77,7 @@ class ProfilePage extends StatelessWidget {
             _buildInfoBox("Name:", controller.name.value),
             _buildInfoBox("Email:", controller.email.value),
             _buildInfoBox("Phone:", controller.phone.value),
+            _buildInfoBox("Password:", controller.password.value),
             _buildInfoBox("Address:", controller.address.value),
           ],
         ),
